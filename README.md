@@ -8,5 +8,3 @@ xterm -fg green -bg black  &
 xterm -fg tan -bg black &
 xterm -fg yellow -bg black &
 
-# sudo apt-get install cgroup-bin
-
