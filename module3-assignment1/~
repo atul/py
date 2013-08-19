@@ -1,0 +1,46 @@
+'''
+Coursera:
+- Software Defined Networking (SDN) course
+-- Module 3 Programming Assignment
+
+Professor: Nick Feamster
+Teaching Assistant: Muhammad Shahbaz
+'''
+
+from mininet.topo import Topo
+from mininet.net import Mininet
+from mininet.link import TCLink
+from mininet.util import irange,dumpNodeConnections
+from mininet.log import setLogLevel
+
+
+class CustomTopo(Topo):
+    "Simple Data Center Topology"
+
+    "linkopts - (1:core, 2:aggregation, 3: edge) parameters"
+    "fanout - number of child switch per parent switch"
+    def __init__(self, linkopts1, linkopts2, linkopts3, fanout=2, depth=1, **opts):
+        # Initialize topology and default options
+        Topo.__init__(self, **opts)
+        
+        # Add your logic here ...
+        self.depth = depth         
+        print linkopts1
+        print fanout
+        print depth 
+        #lastSwitch = None
+        #for i in irange(1,depth):
+        #host = self.addHost('h%s' %i)
+
+       
+        
+    
+linktopts1 = dict(bw=10, delay='5ms', loss=1, max_queue_size=1000, use_htb=True)
+linktopts2 = dict(bw=10, delay='5ms', loss=1, max_queue_size=1000, use_htb=True)
+linktopts3 = dict(bw=10, delay='5ms', loss=1, max_queue_size=1000, use_htb=True)
+                
+#topos = { 'custom': ( lambda: CustomTopo() ) }
+
+topo = CustomTopo(linkopts1,linkopts2, linkopts3, k=2, depth=3)
+
+
